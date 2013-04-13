@@ -1,41 +1,54 @@
 # guides.coffee
 
-class Guide
+class GridSystem
 
+  # Defaults
   options:
     grid:
-      align: "center" # || "left" || "right"
+      align: "center" # || "left"
+      colors:
+        major: "rgba(0, 131, 255, 0.5)"
+        minor: "rgba(0,0,0,0.2)"
+        gutter: "rgba(52, 141, 190, 0.2)"
       x:
         major: 240
         minor: 60
-        gutter: 10
+        gutter: 20
       y:
         major: 80
         minor: 20
         gutter: 0
 
-  constructor: (options ={})->
-    $.extend @options, options
+  constructor: (gridOptions ={})->
+    $.extend @options.grid, gridOptions
     @show()
 
   show: ->
     @_createCanvas() unless @canvas
-    @canvas.style.visbility = "visible"
+    @canvas.style.display = "block"
+    @canvas.style['z-index'] = 9999
 
   hide: ->
-    @canvas.style.visbility = "hidden"
+    @canvas.style.display = "none"
+    @canvas.style['z-index'] = -1
+
+  toggle: ->
+    if @canvas.style.display != "block"
+      @show()
+    else
+      @hide()
 
   update: ->
-    console.log("updating")
-    @canvas.width = Math.max document.body.clientWidth, window.innerWidth
-    @canvas.height = Math.max document.body.clientHeight, window.innerHeight
+    console.log("updating");
+    @canvas.width = window.innerWidth
+    @canvas.height = Math.max document.body.scrollHeight, window.innerHeight
     @_drawGridlines()
 
   _drawGridlines: ->
     context = @canvas.getContext '2d'
 
     # Gutters
-    context.strokeStyle = "rgba(52, 141, 190, 0.2)"
+    context.strokeStyle = @options.grid.colors.gutter
 
     if @options.grid.x.gutter > 0
       context.lineWidth = @options.grid.x.gutter
@@ -46,12 +59,12 @@ class Guide
       @_drawGrid context, 0, @options.grid.y.major
 
     # Minor lines
-    context.strokeStyle = "rgba(0,0,0,0.2)"
+    context.strokeStyle = @options.grid.colors.minor
     context.lineWidth = 1
     @_drawGrid context, @options.grid.x.minor, @options.grid.y.minor
 
     # Major lines
-    context.strokeStyle = "rgba(0, 131, 255, 0.5)"
+    context.strokeStyle = @options.grid.colors.major
     context.lineWidth = 1
     @_drawGrid context, @options.grid.x.major, @options.grid.y.major
 
@@ -86,7 +99,6 @@ class Guide
     @canvas.style.margin = 0
     @canvas.style.top = 0
     @canvas.style.left = 0
-    @canvas.style['z-index'] = 9999
 
     @update();
 

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <title>Demo</title>
+  <script src="jquery.js"></script>
+  <script type="text/javascript" src="https://raw.github.com/ryhan/fixie/master/fixie_min.js"></script>
+  <script src="../guides.js"></script>
+</head>
+<body>
+
+  <div class="fixie">
+    <h1>Guides.js Demo</h1>
+    <p><strong>Press the 'g' key to toggle the grid</strong></p>
+    <p style="padding-right: 170px;"></p>
+    <img style="width: 100%; height: 192px;"/>
+    <p style="padding-left: 150px;"></p>
+    <p style="padding-left: 150px;"></p>
+  </div>
+
+  <script>
+    $(function() {
+      fixie.init();
+      myGrid = new GridSystem({
+        align: 'center',
+        x: { major: 150, gutter: 30},
+        y: { major: 192, minor: 24}
+      });
+
+
+      // Toggle the grid based on the 'g' key.
+      $('body').keydown(function(e) {
+        if (e.keyCode == 71){ myGrid.toggle(); }
+      });
+    });
+  </script>
+
+    <style>
+    body{
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 200;
+      width: 600px;
+      margin: 195px auto;
+    }
+
+    h1{
+      color: #E1544E;
+      font-weight: bold;
+      font-size: 24px;
+      margin-bottom: 27px;
+    }
+    p{
+      margin: 24px 0;
+      color: #444;
+    }
+    strong{
+      font-weight: 400;
+      color: #E1544E;
+    }
+    img{
+      margin: 18px 0 0 0;
+    }
+  </style>
+</body>
