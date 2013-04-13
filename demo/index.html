@@ -19,22 +19,15 @@
 
   <script>
     $(function() {
+      // create fake content
       fixie.init();
-      myGrid = new GridSystem({
-        align: 'center',
-        x: { major: 150, gutter: 30},
-        y: { major: 192, minor: 24}
-      });
 
-
-      // Toggle the grid based on the 'g' key.
-      $('body').keydown(function(e) {
-        if (e.keyCode == 71){ myGrid.toggle(); }
-      });
+      // Add grid
+      new GridSystem();
     });
   </script>
 
-    <style>
+  <style>
     body{
       font-family: Helvetica, Arial, sans-serif;
       font-size: 16px;

@@ -11,12 +11,12 @@ class GridSystem
         minor: "rgba(0,0,0,0.2)"
         gutter: "rgba(52, 141, 190, 0.2)"
       x:
-        major: 240
-        minor: 60
-        gutter: 20
+        major: 150
+        minor: 0
+        gutter: 30
       y:
-        major: 80
-        minor: 20
+        major: 192
+        minor: 24
         gutter: 0
 
   constructor: (gridOptions ={})->
@@ -39,7 +39,6 @@ class GridSystem
       @hide()
 
   update: ->
-    console.log("updating");
     @canvas.width = window.innerWidth
     @canvas.height = Math.max document.body.scrollHeight, window.innerHeight
     @_drawGridlines()
@@ -103,4 +102,9 @@ class GridSystem
     @update();
 
     document.body.appendChild @canvas
+
     $(window).resize () => @update()
+
+    # Toggle the grid based on the 'g' key.  
+    $('body').keydown (e) =>
+      @toggle() if e.keyCode == 71
