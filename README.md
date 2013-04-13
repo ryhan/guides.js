@@ -1,6 +1,10 @@
 guides.js
 =========
-Overlays a grid over your html to help you follow baselines, as well as precisely align content. Can be toggled on/off by pressing the 'g' key.
+
+When designing and developing for the web, it's sometimes difficult to follow baselines and precisely align content. Instead of guessing, use guides.js overlay a grid over you HTML while you're working so that you can visually check that everything is aligned perfectly.
+
+### Demo
+[http://ryhan.github.io/guides.js/demo/](http://ryhan.github.io/guides.js/demo/)
 
 ### Usage
 
