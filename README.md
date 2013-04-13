@@ -27,8 +27,8 @@ To hide the grid from the start, call 'hide' on your GridSystem object. For exam
 You can also pass a few parameters to adjust the grid. For example, to adjust the alignment and spacing of the grid, one might call
 ```javascript
 new GridSystem({
-  align: 'left'
-  x: { major: 300, minor: 100, gutter: 20}
+  align: 'left',
+  x: { major: 300, minor: 100, gutter: 20},
   y: { minor: 50 }
 });
 ```
