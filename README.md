@@ -6,6 +6,8 @@ When designing and developing for the web, it's sometimes difficult to follow ba
 ### Demo
 [http://ryhan.github.io/guides.js/demo/](http://ryhan.github.io/guides.js/demo/)
 
+![Image](http://f.cl.ly/items/1P410b2u1N0Q0s1P0H0d/Screen%20Shot%202013-04-20%20at%205.37.32%20AM.png)
+
 ### Usage
 
 Include jQuery and guides.js, and then call
